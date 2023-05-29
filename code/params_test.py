@@ -20,4 +20,3 @@ opts['use_pretrained_flag'] = 1
 
 
 opts['save_figures'] = 1
-
