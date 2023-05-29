@@ -137,7 +137,13 @@ if opts['k_fold'] == 5:
         x5 = np.load(fold5_files[i])
 
         all_folds_stage1 = (x1 + x2 + x3 + x4 +x5)/5
-        np.save(opts['results_save_path'] + 'temp/linknet/all_folds/{}'.format(get_id_from_file_path(test_files[i], opts['imageType_test'])), all_folds_stage1)
+        if i < len(test_files):
+            np.save(opts['results_save_path'] + 'temp/linknet/all_folds/{}'.format(get_id_from_file_path(test_files[i], opts['imageType_test'])), all_folds_stage1)
+else:
+    
+    # Handle the case when the index is out of range
+    print("Index out of range: ", i)
+        # np.save(opts['results_save_path'] + 'temp/linknet/all_folds/{}'.format(get_id_from_file_path(test_files[i], opts['imageType_test'])), all_folds_stage1)
 ##############################################################################
 ## for unet
 preprocess_input = sm.get_preprocessing(opts['pretrained_model_2'])
@@ -245,5 +251,3 @@ for i in tqdm(range(len(test_files))):#len(test_files)
         plt.title('prediction', fontsize=50)
         plt.savefig(opts['results_save_path_final'] + 'figure/{}.png'.format(get_id_from_file_path(test_files[i], opts['imageType_test'])))
         plt.close()
-
-
