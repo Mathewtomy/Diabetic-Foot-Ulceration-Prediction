@@ -24,7 +24,9 @@ def TTA_reverse(predictions):
     reverse[5, :, :] = cv2.flip(predictions[5, :, :], 1)
     reverse[5, :, :] = cv2.rotate(reverse[5, :, :], cv2.ROTATE_90_COUNTERCLOCKWISE)
     reverse[6, :, :] = cv2.flip(predictions[6, :, :], 1)
-    reverse[6, :, :] = cv2.rotate(reverse[6, :, :], cv2.cv2.ROTATE_180)
+    # reverse[6, :, :] = cv2.rotate(reverse[6, :, :], cv2.cv2.ROTATE_180)
+    reverse[6, :, :] = cv2.rotate(reverse[6, :, :], cv2.ROTATE_180)
+
     reverse[7, :, :] = cv2.flip(predictions[7, :, :], 1)
     reverse[7, :, :] = cv2.rotate(reverse[7, :, :], cv2.ROTATE_90_CLOCKWISE)
     return reverse
